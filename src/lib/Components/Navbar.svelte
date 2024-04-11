@@ -7,8 +7,6 @@
 
     onMount(()=>{
         animateNav=true
-        let urlParams=new URLSearchParams(location.search)
-
     })
 
     let Search=''

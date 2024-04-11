@@ -1,57 +1,19 @@
 <script>
-    import restaurant from '../../../assets/restaurant.png'
+    export let restaurantData
 
-    let competitor=[{
-        "image":restaurant,
-        "name":"sky view"
-    },{
-        "image":restaurant,
-        "name":"Candle lit"
-    },{
-        "image":restaurant,
-        "name":"armada"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },{
-        "image":restaurant,
-        "name":"abcd"
-    },]
+    console.log(restaurantData);
 </script>
 
 
 <div class="leftsection w-[30vw] h-[90vh] bg-[#161616] p-10 overflow-y-scroll">
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col items-center gap-4">
         <p class="text-center text-white text-xl">COMPETITORS</p>
-        {#each competitor as rest}
-            <div class="flex bg-[#1e1e1e] p-3 justify-between items-center cursor-pointer">
-                <div class=""></div>
-                <p class="text-white">{rest.name}</p>
-                <img src={rest.image} alt="" class="w-[6vw]">
+        {#each Object.entries(restaurantData).slice(1) as [key, rest]}
+            <div class="flex flex-col bg-[#1e1e1e] w-[70%] justify-between items-center cursor-pointer">
+                <img src={rest.img_link} alt="" class="w-[100%]">
+                <div class="p-3">
+                    <p class="text-white">{rest.res_name}</p>
+                </div>
             </div>
         {/each}
     </div>

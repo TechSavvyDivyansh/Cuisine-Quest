@@ -1,4 +1,5 @@
 <script>
+	import { Link } from 'svelte-routing';
     import { onMount } from 'svelte'
     import { tweened } from "svelte/motion";
     import { fly } from 'svelte/transition'
@@ -21,7 +22,12 @@
         EntryAnimation=true
     })
 
-    
+    let urlParams=new URLSearchParams(location.search)
+    let searchQuery=urlParams.toString()
+    $:{
+        urlParams.set('searchTerm',data.food)
+        searchQuery=urlParams.toString()
+    }
 
 </script>
 
@@ -41,7 +47,7 @@
     {#if data.expanded}
         <div class="-translate-y-52 flex flex-col gap-2 items-center">
             <!-- <p class="text-white text-center w-[40%]">{data.desc}</p>   -->
-            <button class="text-black px-3 py-1 text-center bg-[#FABF68]">ORDER NOW</button>
+            <Link to={`/restaurant?${searchQuery}`}><button class="text-black px-3 py-1 text-center bg-[#FABF68]">ORDER NOW</button></Link>
         </div>
     {/if}
     </div>
