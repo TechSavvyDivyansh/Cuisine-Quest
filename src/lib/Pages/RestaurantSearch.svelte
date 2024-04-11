@@ -1,6 +1,7 @@
 <script>
   import Center from '../Components/restaurants/Center.svelte';
   import Left from '../Components/restaurants/Left.svelte';
+  import Loading from '../Components/restaurants/Loading.svelte';
   import Right from '../Components/restaurants/Right.svelte';
   import {onMount} from 'svelte'
     
@@ -38,7 +39,7 @@ $:console.log(completeData);
 
 <div class="flex gap-1 relative top-24 justify-center">
     {#if completeData.length===0}
-       <p>LOADING...</p>
+       <Loading/>
     {:else}
         <Left restaurantData={completeData}/>
         <Center restaurantData={completeData[1]}/>

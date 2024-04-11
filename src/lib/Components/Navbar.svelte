@@ -1,9 +1,10 @@
 <script>
-	import { Link } from 'svelte-routing';
+	import { Link,navigate } from 'svelte-routing';
 	import { onMount } from 'svelte';
     import { fly } from 'svelte/transition'
     
     let animateNav=false 
+
 
     onMount(()=>{
         animateNav=true
@@ -23,6 +24,11 @@
     const toggleMenu=()=>{
         openMenu=!openMenu
     }
+
+    let handleSearch=(e)=>{
+        e.preventDefault()
+        navigate(`/restaurant?${searchQuery}`)
+    }
     
 
 </script>
@@ -40,10 +46,10 @@
             </div>
         </div>
 
-        <div class="flex bg-[rgba(255,255,255,0.4)] text-white">
+        <form class="flex bg-[rgba(255,255,255,0.4)] text-white">
             <input type="text" bind:value={Search} placeholder="SEARCH..." class={openMenu?"text-center  placeholder:text-white md:w-[20vw] outline-none py-1 rounded-sm":"hidden md:block text-center bg-[rgba(255,255,255,0.1)] text-white placeholder:text-white w-[20vw] outline-none py-1 rounded-sm"}>
-            <button class="p-2 text-center"><Link to={`/restaurant?${searchQuery}`}><i class='bx bx-search'></i></Link></button>
-        </div>
+            <button class="p-2 text-center" on:click={handleSearch}><i class='bx bx-search'></i></button>
+        </form>
 
         <!-- navigation links -->
         <div class={openMenu?"":"hidden md:inline"}>
